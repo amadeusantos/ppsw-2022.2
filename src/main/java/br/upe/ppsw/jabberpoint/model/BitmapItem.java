@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.apresentacao;
+package br.upe.ppsw.jabberpoint.model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -7,6 +7,8 @@ import java.awt.image.ImageObserver;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.springframework.util.ResourceUtils;
+
+import br.upe.ppsw.jabberpoint.view.Style;
 
 public class BitmapItem extends SlideItem {
 
@@ -37,21 +39,25 @@ public class BitmapItem extends SlideItem {
     return imageName;
   }
 
-  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-    return new Rectangle((int) (myStyle.indent * scale), 0,
-        (int) (bufferedImage.getWidth(observer) * scale),
-        ((int) (myStyle.leading * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
-  }
-
-  public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-    int width = x + (int) (myStyle.indent * scale);
-    int height = y + (int) (myStyle.leading * scale);
-
-    g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
-        (int) (bufferedImage.getHeight(observer) * scale), observer);
-  }
-
   public String toString() {
     return "BitmapItem[" + getLevel() + "," + imageName + "]";
   }
+  
+  public BufferedImage getBufferdImage() {
+	  return this.bufferedImage;
+  }
+  
+  public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
+	    int width = x + (int) (myStyle.getIndent() * scale);
+	    int height = y + (int) (myStyle.getIndent() * scale);
+
+	    g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
+	        (int) (bufferedImage.getHeight(observer) * scale), observer);
+	  }
+  
+  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
+	    return new Rectangle((int) (myStyle.getIndent() * scale), 0,
+	        (int) (bufferedImage.getWidth(observer) * scale),
+	        ((int) (myStyle.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
+	  }
 }

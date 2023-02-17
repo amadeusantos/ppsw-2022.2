@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.apresentacao;
+package br.upe.ppsw.jabberpoint.control;
 
 import java.awt.Frame;
 import java.awt.Menu;
@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import org.springframework.util.ResourceUtils;
+
+import br.upe.ppsw.jabberpoint.model.Presentation;
+import br.upe.ppsw.jabberpoint.view.AboutBox;
 
 public class MenuController extends MenuBar {
 
@@ -119,7 +122,7 @@ public class MenuController extends MenuBar {
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         String pageNumberStr = JOptionPane.showInputDialog((Object) PAGENR);
-        int pageNumber = Integer.parseInt(pageNumberStr);
+        int pageNumber = Integer.parseInt(pageNumberStr);    			
         presentation.setSlideNumber(pageNumber - 1);
       }
     });
