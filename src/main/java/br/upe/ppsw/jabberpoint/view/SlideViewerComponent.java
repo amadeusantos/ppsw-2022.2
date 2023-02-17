@@ -24,6 +24,8 @@ public class SlideViewerComponent extends JComponent {
   private static final int FONTHEIGHT = 10;
   private static final int XPOS = 1100;
   private static final int YPOS = 20;
+  public final static int WIDTH = 1200;
+  public final static int HEIGHT = 800;
 
   private Slide slide;
   private Font labelFont = null;
@@ -68,7 +70,34 @@ public class SlideViewerComponent extends JComponent {
 
     Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
-    slide.draw(g, area, this);
+    draw(g, area, this);
   }
+  
+  public void draw(Graphics g, Rectangle area, ImageObserver view) {
+	    float scale = getScale(area);
 
+	    int y = area.y;
+
+	    SlideItem slideItem = slide.getTextItemTitle();
+	    Style style = Style.getStyle(slideItem.getLevel());
+	    slideItem.draw(area.x, y, scale, g, style, view);
+
+	    y += slideItem.getBoundingBox(g, view, scale, style).height;
+
+	    for (int number = 0; number < slide.getSize(); number++) {
+	      slideItem = (SlideItem) slide.getSlideItems().elementAt(number);
+
+	      style = Style.getStyle(slideItem.getLevel());
+	      slideItem.draw(area.x, y, scale, g, style, view);
+
+	      y += slideItem.getBoundingBox(g, view, scale, style).height;
+	    }
+	  }
+
+	  private float getScale(Rectangle area) {
+	    return Math.min(((float) area.width) / ((float) WIDTH),
+	        ((float) area.height) / ((float) HEIGHT));
+	  }
+
+		 
 }

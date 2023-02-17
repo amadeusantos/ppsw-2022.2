@@ -1,8 +1,5 @@
 package br.upe.ppsw.jabberpoint.model;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
 import java.util.Vector;
 
 public class Slide {
@@ -44,30 +41,8 @@ public class Slide {
   public int getSize() {
     return items.size();
   }
-
-  public void draw(Graphics g, Rectangle area, ImageObserver view) {
-    float scale = getScale(area);
-
-    int y = area.y;
-
-    SlideItem slideItem = this.title;
-    Style style = Style.getStyle(slideItem.getLevel());
-    slideItem.draw(area.x, y, scale, g, style, view);
-
-    y += slideItem.getBoundingBox(g, view, scale, style).height;
-
-    for (int number = 0; number < getSize(); number++) {
-      slideItem = (SlideItem) getSlideItems().elementAt(number);
-
-      style = Style.getStyle(slideItem.getLevel());
-      slideItem.draw(area.x, y, scale, g, style, view);
-
-      y += slideItem.getBoundingBox(g, view, scale, style).height;
-    }
-  }
-
-  private float getScale(Rectangle area) {
-    return Math.min(((float) area.width) / ((float) WIDTH),
-        ((float) area.height) / ((float) HEIGHT));
+  
+  public TextItem getTextItemTitle() {
+	  return this.title;
   }
 }
