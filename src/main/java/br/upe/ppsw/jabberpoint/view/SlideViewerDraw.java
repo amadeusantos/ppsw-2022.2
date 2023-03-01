@@ -83,7 +83,7 @@ public class SlideViewerDraw {
 		}
 	}
 
-	public Rectangle getBoundingBoxTextItem(Graphics g, ImageObserver observer, float scale, Style myStyle, TextItem textItem) {
+	private Rectangle getBoundingBoxTextItem(Graphics g, ImageObserver observer, float scale, Style myStyle, TextItem textItem) {
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale, textItem);
 
 		int xsize = 0, ysize = (int) (myStyle.getLeading() * scale);
@@ -126,7 +126,7 @@ public class SlideViewerDraw {
 		return layouts;
 	}
 
-	public void drawBitmapItem(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer,
+	private void drawBitmapItem(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer,
 			BitmapItem bitmapItem) {
 		int width = x + (int) (myStyle.getIndent() * scale);
 		int height = y + (int) (myStyle.getIndent() * scale);
@@ -136,7 +136,7 @@ public class SlideViewerDraw {
 				(int) (bitmapItem.getBufferdImage().getHeight(observer) * scale), observer);
 	}
 
-	public Rectangle getBoundingBoxBitmapItem(Graphics g, ImageObserver observer, float scale, Style myStyle,
+	private Rectangle getBoundingBoxBitmapItem(Graphics g, ImageObserver observer, float scale, Style myStyle,
 			BitmapItem bitmapItem) {
 		return new Rectangle((int) (myStyle.getIndent() * scale), 0,
 				(int) (bitmapItem.getBufferdImage().getWidth(observer) * scale), ((int) (myStyle.getLeading() * scale))
