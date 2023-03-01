@@ -5,12 +5,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.ImageObserver;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.model.Slide;
+import br.upe.ppsw.jabberpoint.model.SlideItem;
 
 public class SlideViewerComponent extends JComponent {
 	private static final long serialVersionUID = 227L;
@@ -22,6 +24,8 @@ public class SlideViewerComponent extends JComponent {
 	private static final int FONTHEIGHT = 10;
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
+	public final static int WIDTH = 1200;
+	public final static int HEIGHT = 800;
 
 	private Slide slide;
 	private Font labelFont = null;
@@ -65,8 +69,37 @@ public class SlideViewerComponent extends JComponent {
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 		
-		SlideViewerDraw slideViewerDraw = new SlideViewerDraw();
-		slideViewerDraw.drawSlide(g, area, this, slide);
+		
+		drawSlide(g, area, this, slide);
 	}
+	
+	public void drawSlide(Graphics g, Rectangle area, ImageObserver view, Slide slide) {
+		float scale = getScale(area);
+		
+		Visitor visitor = new SlideItemViewer();
+
+		int y = area.y;
+
+		SlideItem slideItem = slide.getTextItemTitle();
+		Style style = Style.getStyle(slideItem.getLevel());
+		slideItem.acceptDraw(visitor, area.x, y, scale, g, style, view);
+		y += slideItem.acceptGetBoundingBox(visitor, g, view, scale, style).height;
+
+		for (int number = 0; number < slide.getSize(); number++) {
+			slideItem = (SlideItem) slide.getSlideItems().elementAt(number);
+
+			style = Style.getStyle(slideItem.getLevel());
+			slideItem.acceptDraw(visitor, area.x, y, scale, g, style, view);
+			y += slideItem.acceptGetBoundingBox(visitor, g, view, scale, style).height;
+		}
+
+	}
+
+	private float getScale(Rectangle area) {
+		return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
+	}
+
+
+	
 
 }

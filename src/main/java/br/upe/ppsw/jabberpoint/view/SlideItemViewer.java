@@ -16,51 +16,15 @@ import java.util.List;
 
 import br.upe.ppsw.jabberpoint.model.BitmapItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
-import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
 
-public class SlideViewerDraw {
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
+public class SlideItemViewer implements Visitor {
 
-	public SlideViewerDraw() {
+	public SlideItemViewer() {
 	}
 	
-	public void drawSlide(Graphics g, Rectangle area, ImageObserver view, Slide slide) {
-		float scale = getScale(area);
-		SlideViewerDraw slideItemViewer = new SlideViewerDraw();
-
-		int y = area.y;
-
-		SlideItem slideItem = slide.getTextItemTitle();
-		Style style = Style.getStyle(slideItem.getLevel());
-		if (slideItem instanceof TextItem) {
-			slideItemViewer.drawTextItem(area.x, y, scale, g, style, view, (TextItem) slideItem);
-			y += slideItemViewer.getBoundingBoxTextItem(g, view, scale, style, (TextItem) slideItem).height;
-		} else {
-			slideItemViewer.drawBitmapItem(area.x, y, scale, g, style, view, (BitmapItem) slideItem);
-			y += slideItemViewer.getBoundingBoxBitmapItem(g, view, scale, style, (BitmapItem) slideItem).height;
-		}
-
-		for (int number = 0; number < slide.getSize(); number++) {
-			slideItem = (SlideItem) slide.getSlideItems().elementAt(number);
-
-			style = Style.getStyle(slideItem.getLevel());
-			if (slideItem instanceof TextItem) {
-				slideItemViewer.drawTextItem(area.x, y, scale, g, style, view, (TextItem) slideItem);
-				y += slideItemViewer.getBoundingBoxTextItem(g, view, scale, style, (TextItem) slideItem).height;
-			} else {
-				slideItemViewer.drawBitmapItem(area.x, y, scale, g, style, view, (BitmapItem) slideItem);
-				y += slideItemViewer.getBoundingBoxBitmapItem(g, view, scale, style, (BitmapItem) slideItem).height;
-			}
-		}
-	}
-
-	private float getScale(Rectangle area) {
-		return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
-	}
-
-	private void drawTextItem(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o, TextItem textItem) {
+	@Override
+	public void drawTextItem(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o, TextItem textItem) {
 		if (textItem.getText() == null || textItem.getText().length() == 0) {
 			return;
 		}
@@ -81,9 +45,12 @@ public class SlideViewerDraw {
 
 			pen.y += layout.getDescent();
 		}
+
 	}
 
-	public Rectangle getBoundingBoxTextItem(Graphics g, ImageObserver observer, float scale, Style myStyle, TextItem textItem) {
+	@Override
+	public Rectangle getBoundingBoxTextItem(Graphics g, ImageObserver observer, float scale, Style myStyle,
+			TextItem textItem) {
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale, textItem);
 
 		int xsize = 0, ysize = (int) (myStyle.getLeading() * scale);
@@ -126,6 +93,7 @@ public class SlideViewerDraw {
 		return layouts;
 	}
 
+	@Override
 	public void drawBitmapItem(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer,
 			BitmapItem bitmapItem) {
 		int width = x + (int) (myStyle.getIndent() * scale);
@@ -136,7 +104,8 @@ public class SlideViewerDraw {
 				(int) (bitmapItem.getBufferdImage().getHeight(observer) * scale), observer);
 	}
 
-	public Rectangle getBoundingBoxBitmapItem(Graphics g, ImageObserver observer, float scale, Style myStyle,
+	@Override
+	public Rectangle getBoundingBoxbBitmapItem(Graphics g, ImageObserver observer, float scale, Style myStyle,
 			BitmapItem bitmapItem) {
 		return new Rectangle((int) (myStyle.getIndent() * scale), 0,
 				(int) (bitmapItem.getBufferdImage().getWidth(observer) * scale), ((int) (myStyle.getLeading() * scale))

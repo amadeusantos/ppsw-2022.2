@@ -1,9 +1,15 @@
 package br.upe.ppsw.jabberpoint.model;
 
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.springframework.util.ResourceUtils;
+
+import br.upe.ppsw.jabberpoint.view.Style;
+import br.upe.ppsw.jabberpoint.view.Visitor;
 
 public class BitmapItem extends SlideItem {
 
@@ -40,6 +46,17 @@ public class BitmapItem extends SlideItem {
 
 	public BufferedImage getBufferdImage() {
 		return this.bufferedImage;
+	}
+
+	@Override
+	public void acceptDraw(Visitor visitor, int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o) {
+		visitor.drawBitmapItem(x, y, scale, g, myStyle, o, this);
+	}
+
+	@Override
+	public Rectangle acceptGetBoundingBox(Visitor visitor, Graphics g, ImageObserver observer, float scale,
+			Style myStyle) {
+		return visitor.getBoundingBoxbBitmapItem(g, observer, scale, myStyle, this);
 	}
 
 }

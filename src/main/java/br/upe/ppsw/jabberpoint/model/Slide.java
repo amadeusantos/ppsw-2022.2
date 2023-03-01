@@ -45,4 +45,5 @@ public class Slide {
   public TextItem getTextItemTitle() {
 	  return this.title;
   }
+  
 }
