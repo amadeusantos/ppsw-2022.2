@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import br.upe.ppsw.jabberpoint.view.SlideViewerComponent;
 
+//TODO: AS- Null Object PresentationBlank
 public class Presentation {
 
   private String title;

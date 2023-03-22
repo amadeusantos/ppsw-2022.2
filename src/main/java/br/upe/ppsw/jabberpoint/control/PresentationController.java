@@ -14,7 +14,7 @@ public class PresentationController {
 		new SlideViewerFrame(JABVERSION, presentation);
 
 		if (args.length == 0) {
-			Accessor.getDemoAccessor().loadFile(presentation, "");
+			new DemoPresentation().loadFile(presentation);
 		} else {
 			new XMLAccessor().loadFile(presentation, args[0]);
 		}
@@ -24,4 +24,6 @@ public class PresentationController {
 		return presentation;
 
 	}
+	
+	
 }

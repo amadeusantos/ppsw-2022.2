@@ -20,7 +20,7 @@ import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
 
-public class XMLAccessor extends Accessor {
+public class XMLAccessor implements Accessor {
 
   protected static final String DEFAULT_API_TO_USE = "dom";
 
