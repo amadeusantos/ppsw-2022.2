@@ -7,10 +7,16 @@ import java.awt.MenuItem;
 import java.awt.MenuShortcut;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
+
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import org.springframework.util.ResourceUtils;
 
+import br.upe.ppsw.jabberpoint.YAMLAccessor;
 import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.view.AboutBox;
 
@@ -54,9 +60,21 @@ public class MenuController extends MenuBar {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.clear();
 
-        Accessor xmlAccessor = new XMLAccessor();
+      //TODO: AS arrumar LoadFile de varios tipos
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo", "json", "xml", "yml");
+        fileChooser.setFileFilter(filter);
+        
+        String path = "";
+        
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            path = fileChooser.getSelectedFile().getAbsolutePath();
+        }
+        
         try {
-          xmlAccessor.loadFile(presentation, ResourceUtils.getFile(TESTFILE).getAbsolutePath());
+        	LoadFile xmlAccessor = PresentationController.setLoadAccessor(path);
+          xmlAccessor.loadFile(presentation, path);
           presentation.setSlideNumber(0);
         } catch (IOException exc) {
           JOptionPane.showMessageDialog(parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
@@ -79,9 +97,10 @@ public class MenuController extends MenuBar {
 
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        Accessor xmlAccessor = new XMLAccessor();
+    	  //TODO: AS arrumar SaveFile de varios tipos
+        SaveFile xmlAccessor = new JSONAccessor();
         try {
-          xmlAccessor.saveFile(presentation, SAVEFILE);
+          xmlAccessor.saveFile(presentation, "test.json");
         } catch (IOException exc) {
           JOptionPane.showMessageDialog(parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
         }

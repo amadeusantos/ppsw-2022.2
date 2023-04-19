@@ -26,6 +26,14 @@ public class BitmapItem extends SlideItem {
 
 	}
 
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
 	public BitmapItem() {
 		this(0, null);
 	}

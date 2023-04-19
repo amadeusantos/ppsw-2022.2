@@ -7,9 +7,9 @@ import br.upe.ppsw.jabberpoint.model.BitmapItem;
 import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.model.Slide;
 
-public class DemoPresentation {
+public class DemoPresentation implements LoadFile {
 
-  public void loadFile(Presentation presentation)
+  public void loadFile(Presentation presentation, String file)
       throws FileNotFoundException {
 
     presentation.setTitle("Apresentação de Demonstração");

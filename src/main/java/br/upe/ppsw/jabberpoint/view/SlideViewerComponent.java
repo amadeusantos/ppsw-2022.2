@@ -15,6 +15,8 @@ import br.upe.ppsw.jabberpoint.model.Slide;
 public class SlideViewerComponent extends JComponent {
 	private static final long serialVersionUID = 227L;
 
+	private final static int WIDTH = 1200;
+	private final static int HEIGHT = 800;
 	private static final Color BGCOLOR = Color.white;
 	private static final Color COLOR = Color.black;
 	private static final String FONTNAME = "Dialog";
@@ -36,7 +38,7 @@ public class SlideViewerComponent extends JComponent {
 	}
 
 	public Dimension getPreferredSize() {
-		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
+		return new Dimension(WIDTH, HEIGHT);
 	}
 
 	public void update(Presentation presentation, Slide data) {

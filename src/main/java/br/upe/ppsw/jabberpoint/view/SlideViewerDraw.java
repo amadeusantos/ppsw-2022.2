@@ -116,7 +116,7 @@ public class SlideViewerDraw {
 		FontRenderContext frc = g2d.getFontRenderContext();
 		LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
 
-		float wrappingWidth = (Slide.WIDTH - s.getIndent()) * scale;
+		float wrappingWidth = (WIDTH - s.getIndent()) * scale;
 
 		while (measurer.getPosition() < textItem.getText().length()) {
 			TextLayout layout = measurer.nextLayout(wrappingWidth);

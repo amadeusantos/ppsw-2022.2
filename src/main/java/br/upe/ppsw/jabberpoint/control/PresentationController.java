@@ -2,27 +2,30 @@ package br.upe.ppsw.jabberpoint.control;
 
 import java.io.IOException;
 
-import br.upe.ppsw.jabberpoint.model.Presentation;
-import br.upe.ppsw.jabberpoint.view.SlideViewerFrame;
+import org.apache.commons.io.FilenameUtils;
+
+import br.upe.ppsw.jabberpoint.YAMLAccessor;
 
 public class PresentationController {
 	  protected static final String JABVERSION = "Jabberpoint 1.6 -";
 
-	public Presentation loadPresentation(String... args)throws IOException {
+	public static LoadFile setLoadAccessor(String file)throws IOException {
 		
-		Presentation presentation = new Presentation();
-		new SlideViewerFrame(JABVERSION, presentation);
-
-		if (args.length == 0) {
-			new DemoPresentation().loadFile(presentation);
-		} else {
-			new XMLAccessor().loadFile(presentation, args[0]);
+		String fileExtension = FilenameUtils.getExtension(file);
+		
+		if (fileExtension.equals("xml")) {
+			return new XMLAccessor();
 		}
-
-		presentation.setSlideNumber(0);
 		
-		return presentation;
-
+		if (fileExtension.equals("json")) {
+			return new JSONAccessor();
+		}
+		
+		if (fileExtension.equals("yml")) {
+			return new YAMLAccessor();
+		}
+		
+		return new DemoPresentation();
 	}
 	
 	

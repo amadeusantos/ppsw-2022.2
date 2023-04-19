@@ -7,6 +7,10 @@ import br.upe.ppsw.jabberpoint.view.Style;
 
 public class TextItem extends SlideItem {
 
+	public void setText(String text) {
+		this.text = text;
+	}
+
 	private String text;
 
 	private static final String EMPTYTEXT = "No Text Given";

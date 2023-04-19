@@ -4,10 +4,19 @@ import java.util.Vector;
 
 public class Slide {
 
-  public final static int WIDTH = 1200;
-  public final static int HEIGHT = 800;
+  public Vector<SlideItem> getItems() {
+		return items;
+	}
 
-  protected TextItem title;
+	public void setItems(Vector<SlideItem> items) {
+		this.items = items;
+	}
+
+	public void setTitle(TextItem title) {
+		this.title = title;
+	}
+
+protected TextItem title;
   protected Vector<SlideItem> items;
 
   public Slide() {

@@ -1,0 +1,44 @@
+!!br.upe.ppsw.jabberpoint.model.Presentation
+showList:
+- items:
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 1, text: Ferramenta de Apresentação
+      de Slides}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 2, text: 'Copyright (c) 1996-now:
+      Ian Darwin'}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 2, text: 'Copyright (c) 2021-now:'}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 2, text: Helaine Barreiros}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 4, text: JabberPoint execução
+      de demonstração sem arquivos persistidos}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 4, text: exibição de apresentação
+      com dados apenas em memória}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 1, text: 'Navegação:'}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 3, text: 'Próximo slide: PgDn
+      ou Enter'}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 3, text: 'Slide Anterior: PgUp
+      ou up-arrow'}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 3, text: 'Parar: q ou Q'}
+  title: JabberPoint
+- items:
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 1, text: Nível 1}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 2, text: Nível 2}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 1, text: Novamente um item de
+      Nível 1}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 1, text: Nível 1 tem Estilo número
+      1}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 2, text: Nível 2 tem Estilo número
+      2}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 3, text: Este é um ítem de Nível
+      3}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 4, text: E este é um ítem de
+      Nível 4}
+  title: Demonstração dos níveis e estilos de uma apresentação
+- items:
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 1, text: 'Para abrir uma nova
+      apresentação,'}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 2, text: utilize o menu File->Open.}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 1, text: ' '}
+  - !!br.upe.ppsw.jabberpoint.model.TextItem {level: 1, text: Fim da Apresentação}
+  - !!br.upe.ppsw.jabberpoint.model.BitmapItem {imageName: 'C:\Users\amade\Documents\UPE\padroesDeProjeto2022-1\meuProjeto\ppsw-2022.2\target\classes\JabberPoint.jpg',
+    level: 1}
+  title: Terceiro Slide
+title: Apresentação de Demonstração

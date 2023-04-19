@@ -20,7 +20,7 @@ import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
 
-public class XMLAccessor implements Accessor {
+public class XMLAccessor implements FileAccessor {
 
   protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -84,7 +84,7 @@ public class XMLAccessor implements Accessor {
 
   }
 
-  protected void loadSlideItem(Slide slide, Element item) {
+  private void loadSlideItem(Slide slide, Element item) {
     int level = 1;
 
     NamedNodeMap attributes = item.getAttributes();
