@@ -1,7 +1,6 @@
 package br.upe.ppsw.jabberpoint.control;
 
 import java.io.FileNotFoundException;
-import org.springframework.util.ResourceUtils;
 
 import br.upe.ppsw.jabberpoint.model.BitmapItem;
 import br.upe.ppsw.jabberpoint.model.Presentation;
@@ -48,7 +47,7 @@ public class DemoPresentation implements LoadFile {
     slide.append(1, " ");
     slide.append(1, "Fim da Apresentação");
     slide.append(
-        new BitmapItem(1, ResourceUtils.getFile("classpath:JabberPoint.jpg").getAbsolutePath()));
+        new BitmapItem(1, "classpath:JabberPoint.jpg"));
     presentation.append(slide);
   }
 

@@ -14,9 +14,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import org.springframework.util.ResourceUtils;
-
-import br.upe.ppsw.jabberpoint.YAMLAccessor;
 import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.view.AboutBox;
 
@@ -40,8 +37,7 @@ public class MenuController extends MenuBar {
   protected static final String SAVE = "Salvar";
   protected static final String VIEW = "Visualizar";
 
-  protected static final String TESTFILE = "classpath:test.xml";
-  protected static final String SAVEFILE = "classpath:dump.xml";
+  protected static final String PATH = "src/main/resources";
 
   protected static final String IOEX = "IO Exception: ";
   protected static final String LOADERR = "Erro ao carregar";
@@ -62,8 +58,9 @@ public class MenuController extends MenuBar {
 
       //TODO: AS arrumar LoadFile de varios tipos
         JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo", "json", "xml", "yml");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo", "md", "xml", "yml");
         fileChooser.setFileFilter(filter);
+        fileChooser.setCurrentDirectory(new File(PATH));
         
         String path = "";
         
@@ -71,10 +68,10 @@ public class MenuController extends MenuBar {
         if (result == JFileChooser.APPROVE_OPTION) {
             path = fileChooser.getSelectedFile().getAbsolutePath();
         }
-        
+
         try {
-        	LoadFile xmlAccessor = PresentationController.setLoadAccessor(path);
-          xmlAccessor.loadFile(presentation, path);
+        	LoadFile accessor = PresentationController.setLoadAccessor(path);
+            accessor.loadFile(presentation, path);
           presentation.setSlideNumber(0);
         } catch (IOException exc) {
           JOptionPane.showMessageDialog(parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
@@ -97,12 +94,24 @@ public class MenuController extends MenuBar {
 
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Salvar Arquivo");
+        fileChooser.setCurrentDirectory(new File(PATH));
+
+        String path = "";
+
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+          path = fileChooser.getSelectedFile().getAbsolutePath();
+        }
     	  //TODO: AS arrumar SaveFile de varios tipos
-        SaveFile xmlAccessor = new JSONAccessor();
+        SaveFile accessor = PresentationController.setSaveAcessor(path);
+
         try {
-          xmlAccessor.saveFile(presentation, "test.json");
-        } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
+          assert accessor != null;
+          accessor.saveFile(presentation, path);
+        } catch (Exception ex) {
+          JOptionPane.showMessageDialog(parent, IOEX + ex, SAVEERR, JOptionPane.ERROR_MESSAGE);
         }
       }
     });

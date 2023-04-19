@@ -1,0 +1,26 @@
+# Apresentação de Demonstração
+## JabberPoint
+ - [Ferramenta de Apresentação de Slides](1)
+ - [Copyright (c) 1996-now: Ian Darwin](2)
+ - [Copyright (c) 2021-now:](2)
+ - [Helaine Barreiros](2)
+ - [JabberPoint execução de demonstração sem arquivos persistidos](4)
+ - [exibição de apresentação com dados apenas em memória](4)
+ - [Navegação:](1)
+ - [Próximo slide: PgDn ou Enter](3)
+ - [Slide Anterior: PgUp ou up-arrow](3)
+ - [Parar: q ou Q](3)
+## Demonstração dos níveis e estilos de uma apresentação
+ - [Nível 1](1)
+ - [Nível 2](2)
+ - [Novamente um item de Nível 1](1)
+ - [Nível 1 tem Estilo número 1](1)
+ - [Nível 2 tem Estilo número 2](2)
+ - [Este é um ítem de Nível 3](3)
+ - [E este é um ítem de Nível 4](4)
+## Terceiro Slide
+ - [Para abrir uma nova apresentação,](1)
+ - [utilize o menu File->Open.](2)
+ - [ ](1)
+ - [Fim da Apresentação](1)
+ - ![classpath:JabberPoint.jpg](1)

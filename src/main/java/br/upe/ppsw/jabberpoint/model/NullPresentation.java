@@ -2,10 +2,10 @@ package br.upe.ppsw.jabberpoint.model;
 
 import java.io.FileNotFoundException;
 
-import org.springframework.util.ResourceUtils;
-
+//TODO: AS - Não está sendo utilizado
 public class NullPresentation extends Presentation {
  public NullPresentation() throws FileNotFoundException {
+	 	super();
 	 	setTitle("Apresentação de Demonstração");
 
 	    Slide slide;
@@ -42,7 +42,7 @@ public class NullPresentation extends Presentation {
 	    slide.append(1, " ");
 	    slide.append(1, "Fim da Apresentação");
 	    slide.append(
-	        new BitmapItem(1, ResourceUtils.getFile("classpath:JabberPoint.jpg").getAbsolutePath()));
+	        new BitmapItem(1, "classpath:JabberPoint.jpg"));
 	    append(slide);
 	  }
 }

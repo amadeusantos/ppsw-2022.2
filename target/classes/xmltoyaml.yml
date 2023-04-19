@@ -1,0 +1,61 @@
+showtitle: XML-Based Presentation for Jabberpoint
+slides: 
+  - title: JabberPoint XML-Demo
+    - text: Bem vindo ao Jabberpoint
+    - level: 1
+    - text: Copyright (c) 1996-2021 Ian Darwin
+    - level: 2
+    - text: Reescrito por
+    - level: 2
+    - text: Helaine Barreiros
+    - level: 2
+    - text: Navegação:
+    - level: 1
+    - text: Próximo Slide: PgDn ou Enter
+    - level: 2
+    - text: Slide Anterior: PgUp ou up-arrow
+    - level: 2
+    - text: Parar: q ou Q
+    - level: 2
+  - title: Exemplo de um Slide vazio
+    - text:  
+    - level: 1
+  - title: Fundo
+    - text: Jabberpoint é um projeto utilizado na
+    - level: 1
+    - text: disciplina de Padrões de Projeto de Software do curso de Engenharia de Engenharia de Software da Universidade de Pernambuco
+    - level: 1
+    - text:  
+    - level: 1
+    - image: classpath:upe.jpg
+    - level: 2
+    - text:  
+    - level: 1
+    - text: Do Multicampi Garanhuns
+    - level: 1
+    - text:  
+    - level: 1
+    - image: classpath:upe_garanhuns.jpg
+    - level: 2
+  - title: JabberPoint: Níveis e Estilos
+    - text: Nível 1
+    - level: 1
+    - text: Nível 2
+    - level: 2
+    - text: Apresentação Jabber
+    - level: 1
+    - text: Nível 2 tem Estilo 2
+    - level: 2
+    - text: Nível 3 tem este estilo
+    - level: 3
+    - text: E o nível 4 tem este
+    - level: 4
+  - title: Slide Final
+    - text: Você também pode navegar através do menu
+    - level: 1
+    - text: Arquivo->Abrir
+    - level: 2
+    - text:  
+    - level: 1
+    - image: classpath:JabberPoint.jpg
+    - level: 1

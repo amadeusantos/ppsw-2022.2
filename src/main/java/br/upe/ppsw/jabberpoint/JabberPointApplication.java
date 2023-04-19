@@ -3,6 +3,7 @@ package br.upe.ppsw.jabberpoint;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
+import br.upe.ppsw.jabberpoint.model.NullPresentation;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.WebApplicationType;

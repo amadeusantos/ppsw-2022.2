@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import org.apache.commons.io.FilenameUtils;
 
-import br.upe.ppsw.jabberpoint.YAMLAccessor;
-
 public class PresentationController {
 	  protected static final String JABVERSION = "Jabberpoint 1.6 -";
 
@@ -17,8 +15,8 @@ public class PresentationController {
 			return new XMLAccessor();
 		}
 		
-		if (fileExtension.equals("json")) {
-			return new JSONAccessor();
+		if (fileExtension.equals("md")) {
+			return new MDAccessor();
 		}
 		
 		if (fileExtension.equals("yml")) {
@@ -27,6 +25,24 @@ public class PresentationController {
 		
 		return new DemoPresentation();
 	}
-	
-	
+
+	public static SaveFile setSaveAcessor(String file) {
+		String fileExtension = FilenameUtils.getExtension(file);
+
+		if (fileExtension.equals("xml")) {
+			return new XMLAccessor();
+		}
+
+		if (fileExtension.equals("md")) {
+			return new MDAccessor();
+		}
+
+		if (fileExtension.equals("yml")) {
+			return new YAMLAccessor();
+		}
+
+		return null;
+	}
+
+
 }

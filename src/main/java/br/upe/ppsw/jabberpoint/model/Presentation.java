@@ -13,7 +13,7 @@ public class Presentation {
   private SlideViewerComponent slideViewComponent = null;
   private int currentSlideNumber = 0;
 
-  public Presentation() {
+public Presentation() {
     slideViewComponent = null;
     clear();
   }
@@ -89,13 +89,5 @@ public class Presentation {
   public List<Slide> getSlides() {
 	  return showList;
   }
-
-public ArrayList<Slide> getShowList() {
-	return showList;
-}
-
-public void setShowList(ArrayList<Slide> showList) {
-	this.showList = showList;
-}
   
 }

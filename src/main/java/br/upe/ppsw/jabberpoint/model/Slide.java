@@ -8,15 +8,11 @@ public class Slide {
 		return items;
 	}
 
-	public void setItems(Vector<SlideItem> items) {
-		this.items = items;
-	}
-
 	public void setTitle(TextItem title) {
 		this.title = title;
 	}
 
-protected TextItem title;
+	protected TextItem title;
   protected Vector<SlideItem> items;
 
   public Slide() {
@@ -54,4 +50,5 @@ protected TextItem title;
   public TextItem getTextItemTitle() {
 	  return this.title;
   }
+
 }
